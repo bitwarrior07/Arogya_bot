@@ -1374,7 +1374,7 @@
                     "streamId": "st-51c70113-fa8f-59ea-bd50-75976a306143",
                     "channel": "default",
                     "lModBy": "u-439c601c-2dd8-5b48-bb9b-ec0f96e772ce",
-                    "lMod": "Thu May 12 2022 16:26:00 GMT+0000 (Coordinated Universal Time)",
+                    "lMod": "Thu May 12 2022 17:26:09 GMT+0000 (Coordinated Universal Time)",
                     "__v": 0
                 }
             ],
@@ -4130,10 +4130,6 @@
                                 "selected": false
                             },
                             {
-                                "value": "nodal_skin_eruptions",
-                                "selected": false
-                            },
-                            {
                                 "value": "continuous_sneezing",
                                 "selected": false
                             },
@@ -4162,23 +4158,7 @@
                                 "selected": false
                             },
                             {
-                                "value": "burning_micturition",
-                                "selected": false
-                            },
-                            {
-                                "value": "weight_gain",
-                                "selected": false
-                            },
-                            {
-                                "value": "anxiety",
-                                "selected": false
-                            },
-                            {
                                 "value": "cold_hands_and_feets",
-                                "selected": false
-                            },
-                            {
-                                "value": "weight_loss",
                                 "selected": false
                             },
                             {
@@ -4186,23 +4166,7 @@
                                 "selected": false
                             },
                             {
-                                "value": "irregular_sugar_level",
-                                "selected": false
-                            },
-                            {
                                 "value": "high_fever",
-                                "selected": false
-                            },
-                            {
-                                "value": "breathlessness",
-                                "selected": false
-                            },
-                            {
-                                "value": "sweating",
-                                "selected": false
-                            },
-                            {
-                                "value": "dehydration",
                                 "selected": false
                             },
                             {
@@ -4210,63 +4174,11 @@
                                 "selected": false
                             },
                             {
-                                "value": "indigestion",
-                                "selected": false
-                            },
-                            {
-                                "value": "nausea",
-                                "selected": false
-                            },
-                            {
-                                "value": "back_pain",
-                                "selected": false
-                            },
-                            {
                                 "value": "diarrhoea",
                                 "selected": false
                             },
                             {
-                                "value": "mild_fever",
-                                "selected": false
-                            },
-                            {
-                                "value": "swelling_of_stomach",
-                                "selected": false
-                            },
-                            {
                                 "value": "chest_pain",
-                                "selected": false
-                            },
-                            {
-                                "value": "dizziness",
-                                "selected": false
-                            },
-                            {
-                                "value": "swollen_blood_vessels",
-                                "selected": false
-                            },
-                            {
-                                "value": "swollen_legs",
-                                "selected": false
-                            },
-                            {
-                                "value": "hip_joint_pain",
-                                "selected": false
-                            },
-                            {
-                                "value": "knee_pain",
-                                "selected": false
-                            },
-                            {
-                                "value": "muscle_weakness",
-                                "selected": false
-                            },
-                            {
-                                "value": "loss_of_balance",
-                                "selected": false
-                            },
-                            {
-                                "value": "skin_peeling",
                                 "selected": false
                             }
                         ],
@@ -4676,5 +4588,5 @@
     },
     "environmentVersionInfo": "9.1.7",
     "traits": [],
-    "encryptedHash": "d43d7852c09acc5866009ac8c459997b"
+    "encryptedHash": "7ae27d9677c751f5ebb8157aa0789ac9"
 }
