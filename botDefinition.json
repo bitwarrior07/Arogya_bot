@@ -1,7 +1,7 @@
 {
     "_id": "st-51c70113-fa8f-59ea-bd50-75976a306143",
     "refId": "7d86f933-2294-5247-87e0-057dc244a0e6",
-    "notifyUserViaEmail": true,
+    "notifyUserViaEmail": false,
     "purpose": "customer",
     "hasUserEndpoint": false,
     "offKoraConfirmation": false,
@@ -88,7 +88,7 @@
             "description": "Arogya",
             "isSmalltalkMigrated": true,
             "nlMeta": {
-                "mlUtterances": 10,
+                "mlUtterances": 14,
                 "patterns": 0,
                 "synonyms": 708
             },
@@ -1374,7 +1374,7 @@
                     "streamId": "st-51c70113-fa8f-59ea-bd50-75976a306143",
                     "channel": "default",
                     "lModBy": "u-439c601c-2dd8-5b48-bb9b-ec0f96e772ce",
-                    "lMod": "Thu May 12 2022 17:26:09 GMT+0000 (Coordinated Universal Time)",
+                    "lMod": "Thu May 19 2022 17:06:27 GMT+0000 (Coordinated Universal Time)",
                     "__v": 0
                 }
             ],
@@ -1414,6 +1414,17 @@
             },
             "refId": "213f7f74-73ca-544c-8fe6-5c05b92f5847",
             "taskName": "Welcome_Task",
+            "taskType": "intent",
+            "nodeType": "dialog"
+        },
+        {
+            "localeData": {
+                "en": {},
+                "es": {},
+                "fr": {}
+            },
+            "refId": "8895eb26-9902-5566-89d3-f7d333463988",
+            "taskName": "CheckBloodPressure",
             "taskType": "intent",
             "nodeType": "dialog"
         }
@@ -1500,6 +1511,82 @@
                 "cityAdvanced": []
             },
             "parentId": "dc-9020be69-7587-50cd-9712-6f9fe846dbee",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
+            "_id": "dc-394f494f-b0fb-5c40-a592-a8648b1b2194",
+            "refId": "e7a3d0d9-8877-5583-8428-09a358d8ad45",
+            "name": "BpMessage",
+            "piiDataEnabled": false,
+            "serviceNodeType": "custom",
+            "type": "message",
+            "message": [
+                {
+                    "channel": "default",
+                    "localeData": {
+                        "en": {
+                            "text": "%7B%7Bcontext.result%7D%7D.%20Thank%20you.%20have%20a%20Wonderful%20day%20ahead.",
+                            "type": "basic"
+                        },
+                        "es": {
+                            "text": "Sample message for Message0002",
+                            "type": "basic"
+                        },
+                        "fr": {
+                            "text": "Sample message for Message0002",
+                            "type": "basic"
+                        }
+                    }
+                }
+            ],
+            "applyDefaultTemplate": false,
+            "localeData": {
+                "en": {
+                    "label": "Message0002"
+                },
+                "es": {
+                    "label": "Message0002"
+                },
+                "fr": {
+                    "label": "Message0002"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-818ce9d6-cca5-5bbc-ac98-47580747e148",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
+            "_id": "dc-48adabc8-399f-57d6-86b6-9482fd5ecab3",
+            "refId": "9562ac44-ce7b-5422-8f9d-654da843fa8e",
+            "name": "getBP",
+            "piiDataEnabled": false,
+            "script": "var%20data%0D%0Adata%20%3D%20context.BloodPressureService.response.body%3B%0D%0Acontext.result%20%3D%20data.result%0D%0AkoreDebugger.log(JSON.stringify(context))%3B%0D%0A",
+            "serviceNodeType": "custom",
+            "type": "script",
+            "applyDefaultTemplate": false,
+            "localeData": {
+                "en": {
+                    "label": "getBloodPressure"
+                },
+                "es": {
+                    "label": "Script0001"
+                },
+                "fr": {
+                    "label": "Script0001"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-32636ee2-93f1-56a8-bdc3-defc9160145f",
             "spellcorrectThreshold": 0,
             "preConditions": [],
             "vNameSpace": [],
@@ -1611,6 +1698,127 @@
                 "cityAdvanced": []
             },
             "parentId": "dc-232a510d-55df-5d91-9dbf-a40e573fd50b",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
+            "_id": "dc-74db3d2a-fcc1-530e-84e3-e66452e0fb0a",
+            "refId": "3dbada6f-7892-57f0-a983-3890eb0997c8",
+            "name": "PredictBloodPressure1",
+            "piiDataEnabled": false,
+            "serviceNodeType": "custom",
+            "type": "botAction",
+            "nodes": [
+                {
+                    "type": "service",
+                    "nodeId": "nd-deaa2797-20e1-5579-a29b-128ed02350e9",
+                    "componentId": "dc-7e2bbc2e-2441-5d0c-879f-7188e86bc88d",
+                    "transitions": [
+                        {
+                            "default": "nd-4435b928-a5d9-50bf-8f5e-2f11d710b3ab",
+                            "metadata": {
+                                "color": "#676767",
+                                "connId": "dummy-8adf69a7-7e48-479f-94e0-af5c0f2da119",
+                                "pathName": "",
+                                "pathsMap": []
+                            }
+                        }
+                    ],
+                    "positionMeta": {
+                        "left": 0,
+                        "top": 199
+                    },
+                    "level": "root"
+                },
+                {
+                    "type": "script",
+                    "nodeId": "nd-4435b928-a5d9-50bf-8f5e-2f11d710b3ab",
+                    "componentId": "dc-48adabc8-399f-57d6-86b6-9482fd5ecab3",
+                    "transitions": [
+                        {
+                            "default": "end",
+                            "metadata": {
+                                "color": "#676767",
+                                "connId": "dummy-feb1cebb-e00d-42db-bc10-8e18ed606e65",
+                                "pathName": "",
+                                "pathsMap": []
+                            }
+                        }
+                    ],
+                    "positionMeta": {
+                        "left": 0.79998779296875,
+                        "top": 400.6000061035156
+                    }
+                }
+            ],
+            "applyDefaultTemplate": false,
+            "localeData": {
+                "en": {
+                    "desc": "",
+                    "label": "PredictBloodPressure1"
+                },
+                "es": {
+                    "desc": "",
+                    "label": "BotAction0001"
+                },
+                "fr": {
+                    "desc": "",
+                    "label": "BotAction0001"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-11a4cebf-b82f-5f82-9cdf-da4df4f855c5",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
+            "_id": "dc-7e2bbc2e-2441-5d0c-879f-7188e86bc88d",
+            "refId": "2c5922d3-eb36-5c30-aae2-dee52e28c887",
+            "name": "BloodPressureService",
+            "piiDataEnabled": false,
+            "endPoint": {
+                "host": "aqueous-basin-14936.herokuapp.com",
+                "port": "",
+                "path": "/check/bloodpressure",
+                "protocol": "https",
+                "method": "post",
+                "connectorEnabled": false,
+                "piiDataEnabled": false
+            },
+            "authRequired": false,
+            "payload": {
+                "type": "raw",
+                "value": "%7B%0A%20%20%22systolic%22%3A%20%22%7B%7Bcontext.forms.BloodPressure.systolicBPvalue%7D%7D%22%2C%0A%20%20%22diastolic%22%3A%20%22%7B%7Bcontext.forms.BloodPressure.diastolicBPvalue%7D%7D%22%0A%7D"
+            },
+            "headers": {
+                "type": "raw",
+                "value": "{\"Content-Type\":\"application/json\"}"
+            },
+            "idp": "none",
+            "serviceNodeType": "custom",
+            "type": "service",
+            "applyDefaultTemplate": false,
+            "localeData": {
+                "en": {
+                    "label": "BloodPressureService"
+                },
+                "es": {
+                    "label": "Service0002"
+                },
+                "fr": {
+                    "label": "Service0002"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-082207e8-bb9a-5dc1-9a36-26d7da03b7a1",
             "spellcorrectThreshold": 0,
             "preConditions": [],
             "vNameSpace": [],
@@ -1812,6 +2020,93 @@
             "useTaskLevelNs": true
         },
         {
+            "_id": "dc-a0dd9027-dae0-5746-816e-bb7b26c4cd55",
+            "refId": "fe96d271-0087-58d9-abc2-57fc3a1e6d2e",
+            "name": "checkBP",
+            "piiDataEnabled": false,
+            "serviceNodeType": "custom",
+            "type": "form",
+            "message": [
+                {
+                    "channel": "default",
+                    "localeData": {
+                        "en": {
+                            "text": "I%20can%20also%20help%20you%20analyzing%20your%20Blood%20Pressure.%20Please%20share%20your%20BP%20readings.",
+                            "type": "basic"
+                        },
+                        "es": {
+                            "text": "Please click below to continue your conversation using a form:",
+                            "type": "basic"
+                        },
+                        "fr": {
+                            "text": "Please click below to continue your conversation using a form:",
+                            "type": "basic"
+                        }
+                    }
+                }
+            ],
+            "errorMessage": [
+                {
+                    "channel": "default",
+                    "localeData": {
+                        "en": {
+                            "text": "We could not submit the information you have provided. Please recheck your data for correctness and retry. If the problem persists, you may discard the form and resume your conversation with the virtual assistant.",
+                            "type": "basic"
+                        },
+                        "es": {
+                            "text": "We could not submit the information you have provided. Please recheck your data for correctness and retry. If the problem persists, you may discard the form and resume your conversation with the virtual assistant.",
+                            "type": "basic"
+                        },
+                        "fr": {
+                            "text": "We could not submit the information you have provided. Please recheck your data for correctness and retry. If the problem persists, you may discard the form and resume your conversation with the virtual assistant.",
+                            "type": "basic"
+                        }
+                    }
+                }
+            ],
+            "submitMessage": [
+                {
+                    "channel": "default",
+                    "localeData": {
+                        "en": {
+                            "text": "The information you have provided has been submitted. Please resume your conversation with the virtual assistant.",
+                            "type": "basic"
+                        },
+                        "es": {
+                            "text": "The information you have provided has been submitted. Please resume your conversation with the virtual assistant.",
+                            "type": "basic"
+                        },
+                        "fr": {
+                            "text": "The information you have provided has been submitted. Please resume your conversation with the virtual assistant.",
+                            "type": "basic"
+                        }
+                    }
+                }
+            ],
+            "applyDefaultTemplate": false,
+            "localeData": {
+                "en": {
+                    "label": "Check Blood Pressure"
+                },
+                "es": {
+                    "label": "BloodPressure0001"
+                },
+                "fr": {
+                    "label": "BloodPressure0001"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-260f6c3d-b517-562b-a981-6057bba78135",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "resourceId": "786f2b0d-bfab-5d93-92e8-b813a1afd3ae",
+            "rtmRenderType": "inline",
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
             "_id": "dc-aa3ec76a-8b01-5ace-96d9-d553cbbae330",
             "refId": "bcc7cf50-a910-53b0-8070-c9d4e3e0ca3d",
             "name": "PredictSymptoms",
@@ -1857,7 +2152,7 @@
                     ],
                     "positionMeta": {
                         "left": -1.7999269386546075,
-                        "top": 320.0000214979369
+                        "top": 301.0000214979369
                     }
                 }
             ],
@@ -1959,6 +2254,85 @@
                 "cityAdvanced": []
             },
             "parentId": "dc-8ad1f172-e6d3-586a-a199-3f79883f216c",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
+            "_id": "dc-e2eea368-426d-5ae4-b7e6-a2e55eef9a63",
+            "refId": "e91b24ce-6bd4-59a4-9e8b-d41bc3d74e13",
+            "name": "Message0001",
+            "piiDataEnabled": false,
+            "serviceNodeType": "custom",
+            "type": "message",
+            "message": [
+                {
+                    "channel": "default",
+                    "localeData": {
+                        "en": {
+                            "text": "Your%20systolic%20value%20is%20%7B%7Bcontext.forms.BloodPressure.systolicBPvalue%20%7D%7D%20and%20diastolic%20value%20is%20%7B%7Bcontext.forms.BloodPressure.diastolicBPvalue%7D%7D.%20I'm%20diagonising...",
+                            "type": "basic"
+                        },
+                        "es": {
+                            "text": "Sample message for Message0001",
+                            "type": "basic"
+                        },
+                        "fr": {
+                            "text": "Sample message for Message0001",
+                            "type": "basic"
+                        }
+                    }
+                }
+            ],
+            "applyDefaultTemplate": false,
+            "localeData": {
+                "en": {
+                    "label": "text"
+                },
+                "es": {
+                    "label": "Message0001"
+                },
+                "fr": {
+                    "label": "Message0001"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-e4973dbd-a800-5312-8e70-475d56371a0e",
+            "spellcorrectThreshold": 0,
+            "preConditions": [],
+            "vNameSpace": [],
+            "useTaskLevelNs": true
+        },
+        {
+            "_id": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
+            "refId": "8895eb26-9902-5566-89d3-f7d333463988",
+            "name": "CheckBloodPressure",
+            "piiDataEnabled": false,
+            "serviceNodeType": "custom",
+            "type": "intent",
+            "applyDefaultTemplate": false,
+            "dialogId": "dg-ad11337b-63f1-5ffe-8709-3adf986730cb",
+            "localeData": {
+                "en": {
+                    "desc": "",
+                    "intent": "CheckBloodPressure"
+                },
+                "es": {
+                    "desc": "",
+                    "intent": "PredictBloodPressure"
+                },
+                "fr": {
+                    "desc": "",
+                    "intent": "PredictBloodPressure"
+                }
+            },
+            "entityFields": {
+                "cityAdvanced": []
+            },
+            "parentId": "dc-d6b1205d-8b7c-5e06-9b5f-7040e18275ba",
             "spellcorrectThreshold": 0,
             "preConditions": [],
             "vNameSpace": [],
@@ -2325,6 +2699,299 @@
             ]
         },
         {
+            "_id": "dg-ad11337b-63f1-5ffe-8709-3adf986730cb",
+            "refId": "b833e8c9-4720-5854-b1b9-7343ee0a4ff8",
+            "nodes": [
+                {
+                    "nodeOptions": {
+                        "customTags": {
+                            "session": [],
+                            "message": [],
+                            "user": []
+                        },
+                        "transitionType": "auto",
+                        "isRetriesExceeded": false,
+                        "promptOptions": "required",
+                        "reuseMarkedupPhrases": false,
+                        "interruptOptions": {
+                            "priority": "task"
+                        },
+                        "transitionMode": "initiateCurrentTask",
+                        "inputHandlingOptions": "useAsEntityValue",
+                        "reuseOptions": "1",
+                        "userInputCorrection": true,
+                        "noAutoCorrection": false,
+                        "notForReuse": false,
+                        "contextTags": []
+                    },
+                    "vNameSpace": [],
+                    "preConditions": [],
+                    "useTaskLevelNs": true,
+                    "nodeId": "intent0",
+                    "type": "intent",
+                    "componentId": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
+                    "transitions": [
+                        {
+                            "default": "nd-frm-350aa575-2aa9-4514-9cc1-e31e4beb9ee0",
+                            "metadata": {
+                                "color": "#299d8e",
+                                "connId": "dummy0"
+                            }
+                        }
+                    ],
+                    "metadata": {
+                        "left": 30,
+                        "top": 120
+                    },
+                    "positionMeta": {
+                        "left": 558,
+                        "top": 97
+                    }
+                },
+                {
+                    "nodeOptions": {
+                        "customTags": {
+                            "session": [],
+                            "message": [],
+                            "user": []
+                        },
+                        "transitionType": "auto",
+                        "isRetriesExceeded": false,
+                        "promptOptions": "required",
+                        "reuseMarkedupPhrases": false,
+                        "interruptOptions": {
+                            "priority": "task"
+                        },
+                        "transitionMode": "initiateCurrentTask",
+                        "inputHandlingOptions": "useAsEntityValue",
+                        "reuseOptions": "1",
+                        "userInputCorrection": true,
+                        "noAutoCorrection": false,
+                        "notForReuse": false,
+                        "contextTags": []
+                    },
+                    "vNameSpace": [],
+                    "preConditions": [],
+                    "useTaskLevelNs": true,
+                    "nodeId": "nd-frm-350aa575-2aa9-4514-9cc1-e31e4beb9ee0",
+                    "type": "form",
+                    "componentId": "dc-a0dd9027-dae0-5746-816e-bb7b26c4cd55",
+                    "transitions": [
+                        {
+                            "default": "nd-msg-c7eade29-3b21-478d-a7ae-f1bb294ca591",
+                            "metadata": {
+                                "color": "#676767",
+                                "connId": "dummy-c57684e1-822d-4197-b412-769a83656ad3",
+                                "pathName": "",
+                                "pathsMap": []
+                            }
+                        }
+                    ],
+                    "positionMeta": {
+                        "left": 558,
+                        "top": 239
+                    }
+                },
+                {
+                    "nodeOptions": {
+                        "customTags": {
+                            "session": [],
+                            "message": [],
+                            "user": []
+                        },
+                        "transitionType": "auto",
+                        "isRetriesExceeded": false,
+                        "promptOptions": "required",
+                        "reuseMarkedupPhrases": false,
+                        "interruptOptions": {
+                            "priority": "task"
+                        },
+                        "transitionMode": "initiateCurrentTask",
+                        "inputHandlingOptions": "useAsEntityValue",
+                        "reuseOptions": "1",
+                        "userInputCorrection": true,
+                        "noAutoCorrection": false,
+                        "notForReuse": false,
+                        "contextTags": []
+                    },
+                    "vNameSpace": [],
+                    "preConditions": [],
+                    "useTaskLevelNs": true,
+                    "nodeId": "nd-msg-c7eade29-3b21-478d-a7ae-f1bb294ca591",
+                    "type": "message",
+                    "componentId": "dc-e2eea368-426d-5ae4-b7e6-a2e55eef9a63",
+                    "transitions": [
+                        {
+                            "default": "nd-bac-44d34a3b-7076-48cb-8d3c-af22018b42ee",
+                            "metadata": {
+                                "color": "#676767",
+                                "connId": "dummy-215127ce-540f-4673-b721-ef9c7d69d85b",
+                                "pathName": "",
+                                "pathsMap": []
+                            }
+                        }
+                    ],
+                    "positionMeta": {
+                        "left": 558,
+                        "top": 380
+                    }
+                },
+                {
+                    "nodeOptions": {
+                        "customTags": {
+                            "session": [],
+                            "message": [],
+                            "user": []
+                        },
+                        "transitionType": "auto",
+                        "isRetriesExceeded": false,
+                        "promptOptions": "required",
+                        "reuseMarkedupPhrases": false,
+                        "interruptOptions": {
+                            "priority": "task"
+                        },
+                        "transitionMode": "initiateCurrentTask",
+                        "inputHandlingOptions": "useAsEntityValue",
+                        "reuseOptions": "1",
+                        "userInputCorrection": true,
+                        "noAutoCorrection": false,
+                        "notForReuse": false,
+                        "contextTags": []
+                    },
+                    "vNameSpace": [],
+                    "preConditions": [],
+                    "useTaskLevelNs": true,
+                    "nodeId": "nd-bac-44d34a3b-7076-48cb-8d3c-af22018b42ee",
+                    "type": "botAction",
+                    "componentId": "dc-74db3d2a-fcc1-530e-84e3-e66452e0fb0a",
+                    "transitions": [
+                        {
+                            "default": "nd-msg-7fa16de8-ffdf-4014-a5e1-55ea949a9cdf",
+                            "metadata": {
+                                "color": "#676767",
+                                "connId": "dummy-7ec040f1-17fa-4527-9ad0-01cedefad176",
+                                "pathName": "",
+                                "pathsMap": []
+                            }
+                        }
+                    ],
+                    "positionMeta": {
+                        "left": 558,
+                        "top": 520
+                    },
+                    "nodes": [
+                        {
+                            "type": "service",
+                            "componentId": "dc-7e2bbc2e-2441-5d0c-879f-7188e86bc88d",
+                            "level": "root",
+                            "nodeId": "nd-deaa2797-20e1-5579-a29b-128ed02350e9",
+                            "nodeOptions": {
+                                "transitionType": "auto"
+                            }
+                        },
+                        {
+                            "type": "script",
+                            "componentId": "dc-48adabc8-399f-57d6-86b6-9482fd5ecab3",
+                            "nodeId": "nd-4435b928-a5d9-50bf-8f5e-2f11d710b3ab",
+                            "nodeOptions": {
+                                "transitionType": "auto"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "nodeOptions": {
+                        "customTags": {
+                            "session": [
+                                {
+                                    "name": "",
+                                    "value": ""
+                                }
+                            ],
+                            "message": [
+                                {
+                                    "name": "",
+                                    "value": ""
+                                }
+                            ],
+                            "user": [
+                                {
+                                    "name": "",
+                                    "value": ""
+                                }
+                            ]
+                        },
+                        "transitionType": "auto",
+                        "isRetriesExceeded": false,
+                        "promptOptions": "required",
+                        "reuseMarkedupPhrases": false,
+                        "interruptOptions": {
+                            "priority": "task"
+                        },
+                        "transitionMode": "initiateCurrentTask",
+                        "inputHandlingOptions": "useAsEntityValue",
+                        "reuseOptions": "1",
+                        "userInputCorrection": true,
+                        "noAutoCorrection": false,
+                        "notForReuse": false,
+                        "contextTags": []
+                    },
+                    "vNameSpace": [],
+                    "preConditions": [],
+                    "useTaskLevelNs": true,
+                    "nodeId": "nd-msg-7fa16de8-ffdf-4014-a5e1-55ea949a9cdf",
+                    "type": "message",
+                    "componentId": "dc-394f494f-b0fb-5c40-a592-a8648b1b2194",
+                    "transitions": [
+                        {
+                            "default": "end",
+                            "metadata": {
+                                "color": "#676767",
+                                "connId": "dummy-a56b13b3-6dba-4307-bfad-b0055f4c30fc",
+                                "pathName": "",
+                                "pathsMap": []
+                            }
+                        }
+                    ],
+                    "positionMeta": {
+                        "left": 558,
+                        "top": 660
+                    }
+                }
+            ],
+            "lname": "checkbloodpressure",
+            "isHidden": false,
+            "localeData": {
+                "en": {
+                    "name": "CheckBloodPressure",
+                    "shortDesc": ""
+                },
+                "es": {
+                    "name": "PredictBloodPressure",
+                    "shortDesc": ""
+                },
+                "fr": {
+                    "name": "PredictBloodPressure",
+                    "shortDesc": ""
+                }
+            },
+            "groups": [],
+            "isFollowUp": false,
+            "interruptOptions": {
+                "priority": "bot"
+            },
+            "contextLifeTime": {
+                "options": "close"
+            },
+            "amendConfig": {
+                "priority": "bot"
+            },
+            "sceneRefId": "2103aae1-28bb-5cf1-b79f-2e02f2f211d3",
+            "vNameSpace": [
+                "f103a9a5-61de-59a5-8072-f98d9feda585"
+            ]
+        },
+        {
             "_id": "dg-febb4007-ba72-51ef-acd1-4855c3fbf02a",
             "refId": "a9610bf4-e75e-5112-a62f-63023d8643dd",
             "nodes": [
@@ -2586,7 +3253,7 @@
                     "componentId": "dc-82778b36-1324-534e-9704-f31716dd8081",
                     "transitions": [
                         {
-                            "default": "nd-int-f5bcc6a0-3b8e-4390-b38e-0d1ef3cdfb0c",
+                            "default": "nd-int-0d2f58cd-6007-4812-828f-e543b4e49cf3",
                             "metadata": {
                                 "color": "#676767",
                                 "connId": "dummy-0db358b0-2b7c-48c7-b755-cd61334e4e34",
@@ -2603,24 +3270,9 @@
                 {
                     "nodeOptions": {
                         "customTags": {
-                            "session": [
-                                {
-                                    "name": "",
-                                    "value": ""
-                                }
-                            ],
-                            "message": [
-                                {
-                                    "name": "",
-                                    "value": ""
-                                }
-                            ],
-                            "user": [
-                                {
-                                    "name": "",
-                                    "value": ""
-                                }
-                            ]
+                            "session": [],
+                            "message": [],
+                            "user": []
                         },
                         "transitionType": "auto",
                         "isRetriesExceeded": false,
@@ -2640,25 +3292,25 @@
                     "vNameSpace": [],
                     "preConditions": [],
                     "useTaskLevelNs": true,
-                    "nodeId": "nd-int-f5bcc6a0-3b8e-4390-b38e-0d1ef3cdfb0c",
+                    "nodeId": "nd-int-0d2f58cd-6007-4812-828f-e543b4e49cf3",
                     "type": "intent",
-                    "componentId": "dc-dfc6106e-3752-54e7-8b4a-a5a1a8cf2dd6",
+                    "componentId": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
                     "transitions": [
                         {
                             "default": "end",
                             "metadata": {
                                 "color": "#676767",
-                                "connId": "dummy-136c69ca-111f-4d55-92f2-c766b99140e6",
+                                "connId": "dummy-4a8a2e15-d163-4d41-a391-4c17ebac9130",
                                 "pathName": "",
                                 "pathsMap": []
                             }
                         }
                     ],
                     "positionMeta": {
-                        "left": 650.4000246853326,
-                        "top": 844.8000309018728
+                        "left": 645.4000246853326,
+                        "top": 811.9999820737478
                     },
-                    "flowTaskId": "9b3c821a-4a67-55e4-b024-dec20797fe73"
+                    "flowTaskId": "b833e8c9-4720-5854-b1b9-7343ee0a4ff8"
                 }
             ],
             "lname": "predictsymptoms",
@@ -2695,6 +3347,39 @@
         }
     ],
     "scenes": [
+        {
+            "_id": "sn-fbe2d37e-cfb8-54f6-8beb-467ca85124ae",
+            "botstoreInfo": [
+                {
+                    "type": "interactive",
+                    "isSecured": false,
+                    "link": "4d776f6c4162c48139626a6742efbfbd"
+                }
+            ],
+            "components": {
+                "snc-b887f9c8-aeff-581c-b7e2-957b972318e5": {
+                    "childs": [],
+                    "seqId": "Id1"
+                }
+            },
+            "currentSeqId": 1,
+            "description": "",
+            "dialogRefId": "b833e8c9-4720-5854-b1b9-7343ee0a4ff8",
+            "name": "CheckBloodPressure",
+            "refId": "2103aae1-28bb-5cf1-b79f-2e02f2f211d3",
+            "sceneLinkedBy": [],
+            "sceneType": "dialogScene",
+            "status": "In Progress",
+            "streamId": "st-51c70113-fa8f-59ea-bd50-75976a306143",
+            "tags": [],
+            "widgetThemeId": "wth-5e3e0d371dbd0c312e39726d",
+            "dialogLinks": {
+                "snc-b887f9c8-aeff-581c-b7e2-957b972318e5": {
+                    "dialogRefId": "b833e8c9-4720-5854-b1b9-7343ee0a4ff8"
+                }
+            },
+            "resourceid": "scenes"
+        },
         {
             "_id": "sn-b11d9a87-7eea-5663-994c-220b31af632e",
             "botstoreInfo": [
@@ -2840,6 +3525,21 @@
             "streamId": "st-51c70113-fa8f-59ea-bd50-75976a306143",
             "comments": [],
             "refId": "077afca5-5759-5992-b112-4bc09cb581ae"
+        },
+        {
+            "_id": "snc-b887f9c8-aeff-581c-b7e2-957b972318e5",
+            "state": 0,
+            "type": "note",
+            "msg": {
+                "type": "text",
+                "payload": {
+                    "text": "Dialog Conversation Started"
+                }
+            },
+            "sceneId": "sn-fbe2d37e-cfb8-54f6-8beb-467ca85124ae",
+            "streamId": "st-51c70113-fa8f-59ea-bd50-75976a306143",
+            "comments": [],
+            "refId": "8f382399-00ff-59c7-8b7f-e97225cd63c7"
         }
     ],
     "widgetThemes": [
@@ -4162,15 +4862,7 @@
                                 "selected": false
                             },
                             {
-                                "value": "cough",
-                                "selected": false
-                            },
-                            {
                                 "value": "high_fever",
-                                "selected": false
-                            },
-                            {
-                                "value": "headache",
                                 "selected": false
                             },
                             {
@@ -4179,6 +4871,14 @@
                             },
                             {
                                 "value": "chest_pain",
+                                "selected": false
+                            },
+                            {
+                                "value": "cough",
+                                "selected": false
+                            },
+                            {
+                                "value": "headache",
                                 "selected": false
                             }
                         ],
@@ -4219,6 +4919,115 @@
                     "resourceId": "a9610bf4-e75e-5112-a62f-63023d8643dd",
                     "resourceMeta": {
                         "componentId": "dc191ffd-86d7-5776-b004-57fc2e01662f"
+                    }
+                }
+            ],
+            "formData": {
+                "visibility": {
+                    "serviceNode": true,
+                    "dialogExecution": true,
+                    "botKit": true
+                },
+                "ttl": 1800
+            },
+            "isSecured": false
+        },
+        {
+            "name": "BloodPressure",
+            "displayName": "BloodPressure",
+            "type": "regular",
+            "description": "regular",
+            "branding": {
+                "properties": []
+            },
+            "componentPaletteView": "list",
+            "refId": "786f2b0d-bfab-5d93-92e8-b813a1afd3ae",
+            "components": [
+                {
+                    "name": "systolicBPvalue",
+                    "type": "number",
+                    "refId": "e65c4116-303b-558a-88dc-eaa2f399a8b0",
+                    "metaData": {
+                        "type": "number",
+                        "key": "number",
+                        "name": "systolicBPvalue",
+                        "displayName": "systolic-BP-value",
+                        "placeholder": "Provide your input",
+                        "toolTip": "",
+                        "componentType": "",
+                        "tabIndexOverride": false,
+                        "defaultvalueInputNum": null,
+                        "required": false,
+                        "isVisible": true,
+                        "validations": {
+                            "validationType": "simple"
+                        },
+                        "validateOn": "onBlur",
+                        "pii_pattern": {
+                            "type": "redaction"
+                        },
+                        "visibilityRules": {
+                            "validationType": "simple",
+                            "simpleValidation": {},
+                            "advancedValidation": {}
+                        }
+                    },
+                    "components": []
+                },
+                {
+                    "name": "diastolicBPvalue",
+                    "type": "number",
+                    "refId": "e8eaa1a8-9229-5bfc-989f-27171bde53fa",
+                    "metaData": {
+                        "type": "number",
+                        "key": "number",
+                        "name": "diastolicBPvalue",
+                        "displayName": "diastolic-BP-value",
+                        "placeholder": "Provide your input",
+                        "toolTip": "",
+                        "componentType": "",
+                        "tabIndexOverride": false,
+                        "defaultvalueInputNum": null,
+                        "required": false,
+                        "isVisible": true,
+                        "validations": {
+                            "validationType": "simple"
+                        },
+                        "validateOn": "onBlur",
+                        "pii_pattern": {
+                            "type": "redaction"
+                        },
+                        "visibilityRules": {
+                            "validationType": "simple",
+                            "simpleValidation": {},
+                            "advancedValidation": {}
+                        }
+                    },
+                    "components": []
+                },
+                {
+                    "name": "Submit",
+                    "type": "button",
+                    "refId": "86f684c8-85a0-564a-a96f-13e35258de1d",
+                    "metaData": {
+                        "key": "button",
+                        "type": "button",
+                        "displayName": "Submit",
+                        "name": "Submit",
+                        "buttonAction": "submit",
+                        "isVisible": true,
+                        "buttonStyle": "primary",
+                        "sourceUrl": ""
+                    },
+                    "components": []
+                }
+            ],
+            "integrations": [
+                {
+                    "type": "dialog",
+                    "resourceId": "b833e8c9-4720-5854-b1b9-7343ee0a4ff8",
+                    "resourceMeta": {
+                        "componentId": "fe96d271-0087-58d9-abc2-57fc3a1e6d2e"
                     }
                 }
             ],
@@ -4328,6 +5137,42 @@
             "type": "DialogIntent",
             "language": "en",
             "entities": []
+        },
+        {
+            "_id": "628526e1f4727b42c49ec47d",
+            "taskId": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
+            "sentence": "Check my blood pressure",
+            "taskName": "CheckBloodPressure",
+            "type": "DialogIntent",
+            "entities": [],
+            "language": "en"
+        },
+        {
+            "_id": "628526fc73b42958d9a50f65",
+            "taskId": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
+            "sentence": "Check my BP",
+            "taskName": "CheckBloodPressure",
+            "type": "DialogIntent",
+            "entities": [],
+            "language": "en"
+        },
+        {
+            "_id": "628528c48a666542610e52d9",
+            "taskId": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
+            "sentence": "BP",
+            "taskName": "CheckBloodPressure",
+            "type": "DialogIntent",
+            "entities": [],
+            "language": "en"
+        },
+        {
+            "_id": "62867767934eb11b729796c8",
+            "taskId": "dc-f4fae507-ff75-5d1a-b666-c080800ba354",
+            "sentence": "blood pressure",
+            "taskName": "CheckBloodPressure",
+            "type": "DialogIntent",
+            "language": "en",
+            "entities": []
         }
     ],
     "koraResponses": [],
@@ -4406,7 +5251,8 @@
             "dialogIntents": [
                 "9b3c821a-4a67-55e4-b024-dec20797fe73",
                 "39561a59-d414-5d84-be52-bc843894b883",
-                "a9610bf4-e75e-5112-a62f-63023d8643dd"
+                "a9610bf4-e75e-5112-a62f-63023d8643dd",
+                "b833e8c9-4720-5854-b1b9-7343ee0a4ff8"
             ],
             "isDefault": true,
             "language": "en",
@@ -4570,6 +5416,8 @@
         ],
         "subTasks": {
             "dialogs": [
+                "dg-ad11337b-63f1-5ffe-8709-3adf986730cb",
+                "dg-aef50807-2b0a-509e-900e-3d56c4947f8b",
                 "dg-a29ab4d6-a8b0-583f-931d-fc6fe33f3b11",
                 "dg-b1dff6b1-2cd0-5abf-9015-f81ed9ba181a",
                 "dg-febb4007-ba72-51ef-acd1-4855c3fbf02a",
@@ -4580,6 +5428,7 @@
             "alerts": [],
             "actions": [],
             "forms": [
+                "frm-f8417367-7d76-53f4-a104-f4dc18506bca",
                 "frm-04a20b6b-2156-5109-a0f2-1d034644656f"
             ]
         },
@@ -4588,5 +5437,5 @@
     },
     "environmentVersionInfo": "9.1.7",
     "traits": [],
-    "encryptedHash": "7ae27d9677c751f5ebb8157aa0789ac9"
+    "encryptedHash": "fe16896077959a4d16e34e7776bacb3c"
 }
